@@ -1,0 +1,119 @@
+<%- include header %>
+	<!-- case list table -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h1>
+			    <!--
+			    <%if(ocase.parentid){%>
+				<a href="/cases/<%=ocase.parentid%>" class="glyphicon glyphicon-step-backward"></a>
+				<%}%>	
+				-->			
+				<%=ocase.subject%>
+				</h1>
+				<label class="label label-primary"><%=ocase.tags%></label>
+				<%=ocase.startdate%>
+				<p><%-ocase.description%></p>	
+				<hr>
+				
+			</div>
+		</div> 
+		
+		
+		<div class="row">
+			<div class="col-md-8">
+				<% if(uid+'' == ocase.uid+''){%>
+	             <div class="panel panel-default">
+  					<div class="panel-body">
+					<form method="post" action="/steps/new">
+				   <div class="form-group">
+				   		<input type="hidden" name="isprivate" value="<%=ocase.isprivate%>">
+						<input type="hidden" name="caseid" value="<%=ocase._id%>">
+					  	<input class="form-control"  name="step" placeholder="new step" required autofocus/>
+					</div>  	
+					<div class="form-group">  	
+			            <label>Note:</label> 
+			            <textarea class="form-control" name="note" required> </textarea>
+			         </div>
+			         <div class="form-group">  
+	     					<input type="checkbox" name="isSubCase">Create sub-case? 
+	     					<input type="submit" value="Save" />
+						    
+						</div> 
+					   </div> <!--end of panel-body-->
+					</div>   
+					</form>
+			<%}%>	<!--end if -->
+				
+			<!-- Steps -->	
+			<div>			
+				<% if(steps != null){%>
+				<ul class="list-group"> 
+				<% steps.forEach(function(s){%>
+					<li class="list-group-item">
+					<% if (s.subcase == undefined){%>
+					<h3 class=""><%=s.step%></h3>
+					<%}else{%>  
+					  <h3><%=s.step%><a href="/cases/<%=s.subcase%>" class="glyphicon glyphicon-step-forward"></a></h3>
+					<%}%>
+					<p><%=s.createdate%></p>
+					<p><%=s.note%></p>
+					</li>
+				<% })%>
+				</ul>
+				<%} %>
+            </div>
+		
+    	  </div>
+
+			
+			<!-- comments list -->
+			
+		<div class="col-md-4">
+			<div class="row">
+		
+		<% if(uid+'' != '0' && uid+'' != ocase.uid+''){%>
+		
+			<form method="post" action="/comments/new">
+				<div class="form-group">  	
+						<label>Comment:</lable>
+						<input type="hidden" name="caseid" value="<%=ocase._id%>">
+						
+			            <textarea  class="form-control" name="comment"> </textarea>
+			    </div>
+			             
+					  <input type="submit" value="Save" />
+			</form>
+
+		<%}%>	
+					
+				<% if(comments != null && comments!=''){%>
+				<table class="table"> 
+				<% comments.forEach(function(c){%>
+					<tr><td><%=c.comment%></td></tr>
+				<% })%>
+				</table>
+				<%}else{%>
+					There is no comments!  
+				<%}%>
+			
+			
+			<!-- ad -->
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- sunorth_sidebar-left-1_AdSense1_250x250_as -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:250px;height:250px"
+			     data-ad-client="ca-pub-1018407477199873"
+			     data-ad-slot="2656985340"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			</div>	<!-- end of row -->
+		</div> <!-- end of col-->
+		
+	</div><!-- end of row -->
+</div>	
+	
+	
+<%- include footer %>

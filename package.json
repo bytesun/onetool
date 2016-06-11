@@ -1,35 +1,50 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "MyTools",
   "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "description": "All-In-One Tools Space",
+  "homepage": "https://www.sunorth.org/",
   "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
+    "personal case",
+    "solution"
   ],
-  "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
-  },
-  "homepage": "http://www.openshift.com/",
+  "private": true,
+
   "repository": {
     "type": "git",
-    "url": "https://github.com/openshift/origin-server"
+    "url": "https://github.com/bytesun/ocase.git"
   },
 
   "engines": {
-    "node": ">= 0.6.0",
+    "node": ">= 0.10.0",
     "npm": ">= 1.0.0"
   },
-
+  
   "dependencies": {
-    "express": "~3.4.4"
+      "express" : "~4.5.1",
+      "mongoose" : "~3.8.0",
+      "body-parser" : "~1.4.2",
+      "method-override" : "~2.0.2",
+      "bcryptjs": "^2.1.0",
+      "csurf":"^1.8.0",
+    	    "serve-favicon": "2.1.7",
+    	    "morgan": "~1.0.0",
+    	    "cookie-parser": "~1.0.1",
+    	    "body-parser": "^1.7.0",
+    	    "debug": "~0.7.4",
+    	    "ejs": "^1.0.0",
+    	    "stylus": "0.42.3",
+    	    "connect-flash":"^0.1.1",
+    	    "express-session": "^1.7.6",
+    	    "passport": "^0.2.1",
+    	    "password-hash":"^1.2.2",
+    	    "passport-facebook": "^1.0.3",
+    	    "passport-google": "^0.3.0",
+    	    "passport-local": "^1.0.0",
+    	    "passport-twitter": "^1.0.2"
   },
+
   "devDependencies": {},
   "bundleDependencies": [],
-
   "private": true,
   "main": "server.js"
 }
