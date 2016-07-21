@@ -8,29 +8,18 @@ var express     = require('express');
  favicon        = require('serve-favicon'),
  logger         = require('morgan'),
  cookieParser   = require('cookie-parser'),
- mongoose       = require( 'mongoose' ),
- csrf           = require('csurf');
+ mongoose       = require( 'mongoose' );
+ 
 
-
-
-// configuration ===========================================
 // config files
 var db = require('./config/db');
 
-
-
-//===============PASSPORT=================
-
-
-var passport = require('passport');
 
 //Using the flash middleware provided by connect-flash to store messages in session
 // and displaying in templates
 var flash = require('connect-flash');
 app.use(flash());
 
-var initPassport = require('./passport/init');
-initPassport(passport);
 
 //view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,9 +31,7 @@ app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 // app.use(favicon(__dirname + '/public/assets/img/favicon.ico'));
 
-app.use(session({secret: 'ssssffffopencase',saveUninitialized: true, resave: true}));
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 // parse application/json 
 app.use(bodyParser.json()); 
@@ -61,14 +48,14 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public')); 
 
-app.use(csrf());
+// app.use(csrf());
 
-// routes ==================================================
-var index = require('./routes/index')(passport);
-var user = require('./routes/user');
+// // routes ==================================================
+// var index = require('./routes/index')(passport);
+// var user = require('./routes/user');
 
-app.use('/', index);
-app.use('/', user);
+// app.use('/', index);
+// app.use('/', user);
 
 
 
