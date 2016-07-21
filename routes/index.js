@@ -14,7 +14,8 @@ var isAuthenticated = function (req, res, next) {
 module.exports = function(passport){
 
 	router.get('/', function(req, res) {
-		res.render('index',{csrfToken: req.csrfToken()});
+		res.send("index.html");
+		// res.render('index',{csrfToken: req.csrfToken()});
 	});	
 	/* GET login page. */
 	router.get('/login', function(req, res) {

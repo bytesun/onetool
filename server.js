@@ -40,7 +40,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(favicon(__dirname + '/public/assets/img/favicon.ico'));
+// app.use(favicon(__dirname + '/public/assets/img/favicon.ico'));
 
 app.use(session({secret: 'ssssffffopencase',saveUninitialized: true, resave: true}));
 app.use(passport.initialize());
@@ -66,10 +66,10 @@ app.use(csrf());
 // routes ==================================================
 var index = require('./routes/index')(passport);
 var user = require('./routes/user');
-var ocase = require('./routes/ocase');
+
 app.use('/', index);
 app.use('/', user);
-app.use('/', ocase);
+
 
 
 

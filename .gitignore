@@ -1,0 +1,8 @@
+node_modules/*
+data/*
+mongod
+public/node_modules/*
+public/*.log
+public/app/js/×
+public/typings/*
+
