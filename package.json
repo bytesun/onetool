@@ -2,10 +2,9 @@
   "name": "MyTools",
   "version": "1.0.0",
   "description": "All-In-One Tools Space",
-  "homepage": "https://www.sunorth.org/",
+  "homepage": "https://tools.bluepage.me/",
   "keywords": [
-    "personal case",
-    "solution"
+    "tool"
   ],
   "private": true,
 
